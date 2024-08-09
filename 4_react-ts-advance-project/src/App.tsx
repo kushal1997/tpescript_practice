@@ -15,11 +15,11 @@ function App() {
           autoFocus
         /> */}
         <p>
-          <Button el="button">Click here</Button>
+          <Button>Click here</Button>
         </p>
 
         <p>
-          <Button el="link" href="https://www.google.com/" target="_blanck">
+          <Button href="https://www.google.com/" target="_blanck">
             Open the link
           </Button>
         </p>
