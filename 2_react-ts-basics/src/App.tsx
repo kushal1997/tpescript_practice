@@ -4,7 +4,8 @@ import Header from "./components/Header";
 import goalsImg from "./assets/goals.jpg";
 import CourseGoalList from "./components/CourseGoalList";
 import { formType, type CourseGoal as CourseGoalType } from "./types";
-import NewGoal from "./components/NewGoal";
+// import NewGoal from "./components/NewGoal";
+import NewGoal_Ref from "./components/NewGoal_Ref";
 
 export default function App() {
   //if we are going to use useState, then
@@ -13,12 +14,24 @@ export default function App() {
 
   const [goals, setGoals] = useState<CourseGoalType[]>([]);
 
-  const handleAddGoal = (values:formType) => {
+  // this approach was used for MewGoal file while using a state to get the data from a form
+  // const handleAddGoal = (values: formType) => {
+  //   setGoals((prevGoals) => {
+  //     const newGoal: CourseGoalType = {
+  //       id: Math.random(),
+  //       title: values.goal,
+  //       description: values.summary,
+  //     };
+  //     return [...prevGoals, newGoal];
+  //   });
+  // };
+
+  const handleAddGoal = (A: string, B: string) => {
     setGoals((prevGoals) => {
       const newGoal: CourseGoalType = {
         id: Math.random(),
-        title: values.goal,
-        description: values.summary,
+        title: A,
+        description: B,
       };
       return [...prevGoals, newGoal];
     });
@@ -34,7 +47,8 @@ export default function App() {
         <h1>Your Course Goals</h1>
       </Header>
       {/* <button onClick={handleAddGoal}>Click here</button> */}
-      <NewGoal addGoalFunc={handleAddGoal}/>
+      {/* <NewGoal addGoalFunc={handleAddGoal}/> */}
+      <NewGoal_Ref onAddGoal={handleAddGoal} />
       <CourseGoalList goals={goals} onDelete={handleDeleteGoal} />
     </main>
   );
