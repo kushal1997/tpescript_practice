@@ -1,6 +1,7 @@
 // import Input from "./components/Input";
 
 import Button from "./components/Button";
+import Container from "./components/Container";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           placeholder="enter age"
           autoFocus
         /> */}
-        <p>
+
+        {/* <p>
           <Button>Click here</Button>
         </p>
 
@@ -22,7 +24,16 @@ function App() {
           <Button href="https://www.google.com/" target="_blanck">
             Open the link
           </Button>
-        </p>
+        </p> */}
+
+        <Container
+          as={"a"}
+          className="button"
+          href="https://www.google.com/"
+          target="_blanck"
+        >
+          Hey click here
+        </Container>
       </main>
     </>
   );
