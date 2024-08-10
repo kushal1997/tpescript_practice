@@ -3,10 +3,16 @@
 import Button from "./components/Button";
 import Container from "./components/Container";
 import IconButton from "./components/IconButton";
+import List from "./components/List";
 
 function HeartIcon() {
   return <span>❤️</span>;
 }
+
+const users = [
+  { id: "u1", name: "Max" },
+  { id: "u2", name: "Manuel" },
+];
 function App() {
   return (
     <>
@@ -39,9 +45,17 @@ function App() {
           Hey click here
         </Container> */}
 
-        <IconButton icon={HeartIcon} onClick={() => console.log("liked")}>
+        {/* <IconButton icon={HeartIcon} onClick={() => console.log("liked")}>
           Like
-        </IconButton>
+        </IconButton> */}
+
+        <section>
+          <h2>Users</h2>
+          <List
+            items={users}
+            renderItems={(user) => <li key={user.id}>{user.name}</li>}
+          />
+        </section>
       </main>
     </>
   );
