@@ -1,7 +1,9 @@
 // import Input from "./components/Input";
 
+import { useRef } from "react";
 import Button from "./components/Button";
 import Container from "./components/Container";
+import Forward_Ref_Input from "./components/FowardRefInput";
 import IconButton from "./components/IconButton";
 import List from "./components/List";
 
@@ -14,6 +16,7 @@ const users = [
   { id: "u2", name: "Manuel" },
 ];
 function App() {
+  const input = useRef<HTMLInputElement>(null);
   return (
     <>
       <main>
@@ -49,13 +52,15 @@ function App() {
           Like
         </IconButton> */}
 
-        <section>
+        {/* <section>
           <h2>Users</h2>
           <List
             items={users}
             renderItems={(user) => <li key={user.id}>{user.name}</li>}
           />
-        </section>
+        </section> */}
+
+        <Forward_Ref_Input id="name" label="Your name" ref={input} />
       </main>
     </>
   );
