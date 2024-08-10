@@ -2,7 +2,11 @@
 
 import Button from "./components/Button";
 import Container from "./components/Container";
+import IconButton from "./components/IconButton";
 
+function HeartIcon() {
+  return <span>❤️</span>;
+}
 function App() {
   return (
     <>
@@ -26,14 +30,18 @@ function App() {
           </Button>
         </p> */}
 
-        <Container
+        {/* <Container
           as={"a"}
           className="button"
           href="https://www.google.com/"
           target="_blanck"
         >
           Hey click here
-        </Container>
+        </Container> */}
+
+        <IconButton icon={HeartIcon} onClick={() => console.log("liked")}>
+          Like
+        </IconButton>
       </main>
     </>
   );
