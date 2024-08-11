@@ -6,6 +6,8 @@ import Container from "./components/Container";
 import Forward_Ref_Input from "./components/FowardRefInput";
 import IconButton from "./components/IconButton";
 import List from "./components/List";
+import Input from "./components/Input";
+import Form from "./components/Form";
 
 function HeartIcon() {
   return <span>❤️</span>;
@@ -17,6 +19,11 @@ const users = [
 ];
 function App() {
   const input = useRef<HTMLInputElement>(null);
+
+  const handleSave = (data: unknown) => {
+    const extractedData = data as { name: string; age: string };
+    console.log(extractedData);
+  };
   return (
     <>
       <main>
@@ -60,7 +67,21 @@ function App() {
           />
         </section> */}
 
-        <Forward_Ref_Input id="name" label="Your name" ref={input} />
+        {/* <Forward_Ref_Input id="name" label="Your name" ref={input} /> */}
+
+        <Form onSave={handleSave}>
+          <Input id="name" label="Your name" />
+          <Input
+            id="age"
+            label="your age"
+            type="number"
+            placeholder="enter age"
+            autoFocus
+          />
+          <p>
+            <Button>Save</Button>
+          </p>
+        </Form>
       </main>
     </>
   );
