@@ -5,7 +5,7 @@ export type BlogPost = {
 };
 
 type BlogPostsProps = {
-  posts: BlogPost[];
+  posts: BlogPost[] ;
 };
 
 export default function BlogPosts({ posts }: BlogPostsProps) {
