@@ -1,7 +1,7 @@
 import { addToCart } from "../store/slices/cart_slice";
 import { useCartDispatch } from "../store/hooks";
 
-type ProductProps = {
+export type ProductProps = {
   id: string;
   image: string;
   title: string;
