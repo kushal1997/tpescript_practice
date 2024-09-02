@@ -51,7 +51,7 @@ export default function CartItems() {
       </ul>
       {formattedTotalPrice > 0 ? (
         <p id="cart-total-price">
-          Cart Total: <strong>{formattedTotalPrice}</strong>
+          Cart Total: <strong>$ {formattedTotalPrice}</strong>
         </p>
       ) : (
         ""
