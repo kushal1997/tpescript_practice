@@ -445,6 +445,7 @@ border-radius: 10px;
 
 .upcoming-session .actions {
   margin: -0.5rem 0;
+  cursor: pointer;
 }
 
 @keyframes fade-slide-down {
