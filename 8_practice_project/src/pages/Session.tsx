@@ -5,10 +5,9 @@ import { SESSIONS } from "../dummy-sessions.ts";
 import Layout from "../components/layout/index.tsx";
 import BookSession from "../components/modal/book_session.tsx";
 
-
 export default function SessionPage() {
   const params = useParams<{ id: string }>();
-  const [formVisisble,isFormVisible]=React.useState<boolean>(false)
+  const [formVisisble, isFormVisible] = React.useState<boolean>(false);
 
   const sessionId = params.id;
   const loadedSession = SESSIONS.find((session) => session.id === sessionId);
@@ -21,19 +20,24 @@ export default function SessionPage() {
     );
   }
 
-
-  const handleOpenModal=()=>{
-    isFormVisible(true)
-  }
-  const handleCloseModal=()=>{
-    isFormVisible(false)
-  }
+  const handleOpenModal = () => {
+    isFormVisible(true);
+  };
+  const handleCloseModal = () => {
+    isFormVisible(false);
+  };
 
   return (
     <Layout>
-      {
-        formVisisble && <BookSession onClose={handleCloseModal}/>
-      }
+      {formVisisble && (
+        <BookSession
+          onClose={handleCloseModal}
+          title={loadedSession.title}
+          summary={loadedSession.summary}
+          date={loadedSession.date}
+          id={loadedSession.id}
+        />
+      )}
       <main id="session-page">
         <article>
           <header>
@@ -49,7 +53,9 @@ export default function SessionPage() {
               </time>
               <p>
                 {/* Todo: Add button that opens "Book Session" dialog / modal */}
-                <button onClick={handleOpenModal} className="button">Book Session</button>
+                <button onClick={handleOpenModal} className="button">
+                  Book Session
+                </button>
               </p>
             </div>
           </header>

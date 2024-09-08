@@ -1,6 +1,8 @@
 import * as React from "react";
 import { createPortal } from "react-dom";
 import { SESSIONS } from "../../dummy-sessions";
+import { useSessionSelector, useSessiontDispatch } from "../../store/hooks";
+import { removeSession } from "../../store/slices/booking_session";
 
 interface IUpcomingSessionsProps {
   onClose: () => void;
@@ -9,6 +11,14 @@ interface IUpcomingSessionsProps {
 const UpcomingSessions: React.FunctionComponent<IUpcomingSessionsProps> = ({
   onClose,
 }) => {
+  const upcomingSessions = useSessionSelector(
+    (state) => state.booked_session.sessions
+  );
+  const dispatch = useSessiontDispatch();
+
+  const handleCancelSession = (value: string) => {
+    dispatch(removeSession(value));
+  };
   return createPortal(
     <>
       <div className="modal-container">
@@ -28,17 +38,24 @@ const UpcomingSessions: React.FunctionComponent<IUpcomingSessionsProps> = ({
               </button>
             </p>
           </div>
-          <div className="upcoming-session ">
-            <div id="">
-              <h3>{SESSIONS[0].title}</h3>
-              <p>{SESSIONS[0].summary}</p>
-              <time dateTime="2024-09-04">Sep 4, 2024</time>
-
+          {upcomingSessions.map((el, i) => (
+            <div className="upcoming-session " key={i}>
+              <div id="">
+                <h3>{el.title}</h3>
+                <p>{el.summary}</p>
+                <time dateTime={new Date(el.date).toISOString()}>
+                  {new Date(el.date).toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </time>
+              </div>
+              <p className="actions" onClick={() => handleCancelSession(el.id)}>
+                Cancel
+              </p>
             </div>
-            <p className="actions" >
-              Cancel
-            </p>
-          </div>
+          ))}
         </dialog>
       </div>
     </>,
